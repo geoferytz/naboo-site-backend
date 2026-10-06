@@ -12,3 +12,5 @@ interface Demos extends JpaRepository<DemoRequest,UUID>, JpaSpecificationExecuto
 interface Settings extends JpaRepository<Setting,String> {}
 interface Users extends JpaRepository<AdminUser,UUID>, JpaSpecificationExecutor<AdminUser> { java.util.Optional<AdminUser> findByEmailIgnoreCase(String email); }
 interface Audits extends JpaRepository<AuditLog,UUID>, JpaSpecificationExecutor<AuditLog> {}
+interface Orders extends JpaRepository<Order,UUID>, JpaSpecificationExecutor<Order> { java.util.Optional<Order> findByReferenceNumberAndEmailIgnoreCase(String referenceNumber,String email); }
+interface OrderItems extends JpaRepository<OrderItem,UUID> { java.util.List<OrderItem> findByOrderId(UUID orderId); }

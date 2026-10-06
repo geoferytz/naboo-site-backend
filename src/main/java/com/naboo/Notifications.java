@@ -30,6 +30,10 @@ class Notifications {
         if(!List.of("APPROVED","RESCHEDULED").contains(status)) return;
         send(email,"NABOO demo request "+status.toLowerCase()+" ("+reference+")","Your demo request "+reference+" has been "+status.toLowerCase()+". NABOO will contact you with any remaining details.",reference);
     }
+    void orderStatus(String email,String reference,String status) {
+        if(!List.of("PAID","CANCELLED","REFUNDED").contains(status)) return;
+        send(email,"NABOO order "+reference+" "+status.toLowerCase(),"Your order "+reference+" is now marked as "+status.toLowerCase().replace('_',' ')+". Contact NABOO if you have any questions.",reference);
+    }
     private void send(String to,String subject,String text,String reference) {
         if(host.isBlank() || from.isBlank() || to==null || to.isBlank()) return;
         JavaMailSenderImpl sender=new JavaMailSenderImpl();sender.setHost(host);sender.setPort(port);
