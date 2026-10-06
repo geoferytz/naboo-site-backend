@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/naboo}
+    username: ${DATABASE_USER:naboo}
+    password: ${DATABASE_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 3MB
+      max-request-size: 3MB
+  graphql:
+    path: /graphql
+server:
+  forward-headers-strategy: framework
+app:
+  jwt-secret: ${JWT_SECRET:}
+  admin-email: ${ADMIN_EMAIL:}
+  admin-password: ${ADMIN_PASSWORD:}
